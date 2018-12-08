@@ -47,7 +47,7 @@
 	}
 
 	$_SESSION['logged'] = true;
-	$_SESSION['email'] = $email;
+	$_SESSION['accountID'] = $row1['accountID'];
 	$_SESSION['accountN'] = $accountN;
 	$_SESSION['customerID'] = $row['customerID'];
 	header("Location: home.php?log_in_successful");

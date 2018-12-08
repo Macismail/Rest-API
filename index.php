@@ -44,21 +44,21 @@
 					</span>
 					-->
 					<div class="wrap-input100 validate-input" data-validate = "Valid email">
-						<input class="input100" type="text" name="email">
-						<span class="focus-input100" data-placeholder="Email"></span>
+						<input class="input100" type="text" name="email" value="paulth@gmail.com">
+						<span class="focus-input100" data-placeholder=""></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Account Number">
-						<input class="input100" type="text" name="accountN">
-						<span class="focus-input100" data-placeholder="Account Number"></span>
+					<div class="wrap-input100 validate-input" data-validate="Email">
+						<input class="input100" type="text" name="accountN" value="767621">
+						<span class="focus-input100" data-placeholder=""></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter Code">
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-						<input class="input100" type="password" name="code">
-						<span class="focus-input100" data-placeholder="Security Code"></span>
+						<input class="input100" type="password" name="code" value="456789">
+						<span class="focus-input100" data-placeholder=""></span>
 					</div>
 
 					<div class="container-login100-form-btn">
@@ -69,58 +69,18 @@
 							</button>
 						</div>
 					</div>
-				</form>
+				</form><br>
 
-					<div class="text-center p-t-115">
+					<div class="text-center">
 						<span class="txt1">	Don’t have an account? </span>
-						<a class="txt2" href="#" data-toggle="modal" data-target="#exampleModal">	Create Account </a>
+						<a href="register.php">	Create Customer </a>
 					</div>
 
 			</div>
 		</div>
 	</div>
 
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title">Create Account</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
-	      <div class="modal-body">
-					<div class="wrap-input100 validate-input" data-validate="Full Name">
-						<input class="input100" type="text" name="name">
-						<span class="focus-input100" data-placeholder="Full Name"></span>
-					</div>
-					<div class="wrap-input100 validate-input" data-validate="email">
-						<input class="input100" type="email" name="email">
-						<span class="focus-input100" data-placeholder="email"></span>
-					</div>
-					<div class="wrap-input100 validate-input" data-validate="Address">
-						<input class="input100" type="text" name="address">
-						<span class="focus-input100" data-placeholder="Address"></span>
-					</div>
-					<div class="wrap-input100 validate-input" data-validate="Contact">
-						<input class="input100" type="phone" name="contact">
-						<span class="focus-input100" data-placeholder="Contact"></span>
-					</div>
-	      </div>
-	      <div class="modal-footer">
-					<div class="container-login100-form-btn">
-						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn" type="submit" name="submit">
-								Submit
-							</button>
-						</div>
-					</div>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+
 
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>

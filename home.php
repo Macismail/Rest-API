@@ -1,4 +1,24 @@
-<?php include_once 'connDB.php'; ?>
+<?php
+
+	include_once 'connDB.php';
+	if (!$_SESSION['logged']) {
+		header("Location: index.php?log_in_error=login");
+		exit();
+	}
+	$accountN = $_SESSION['accountN'];
+	$customerID = $_SESSION['customerID'];
+	$accountID = $_SESSION['accountID'];
+
+	$newAccout = "";
+	function createAN(){
+		$numbers = '123456789';
+		for ($i = 0; $i < 8; $i++) {
+				$tempCode .= $numbers[rand(0, 8)]; //length - 1
+		}
+		return $tempCode;
+	}
+	$newAccout = createAN();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,9 +54,11 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-
+				<div class="login100-form-title p-b-26">
+					<?php if ($_SESSION['logged']){echo '<a href="logout.php">Sign Out</a>';}?>
+				</div>
 					<span class="login100-form-title p-b-26">
-						Account
+						My Account
 					</span>
 
 					<div class="row">
@@ -45,18 +67,18 @@
 							<div class="container-login100-form-btn">
 								<div class="wrap-login100-form-btn">
 									<div class="login100-form-bgbtn"></div>
-									<button class="login100-form-btn">
-										Create Account
-									</button>
+									<a class="login100-form-btn" href="http://localhost:8080/api/customers">
+										Get All Customers
+									</a>
 								</div>
 							</div>
 
 							<div class="container-login100-form-btn">
 								<div class="wrap-login100-form-btn">
 									<div class="login100-form-bgbtn"></div>
-									<button class="login100-form-btn">
+									<a class="login100-form-btn"href="http://localhost:8080/api/customers/account/accountBalance/<?php echo $accountID ?>">
 										Check Balance
-									</button>
+									</a>
 								</div>
 							</div>
 
@@ -89,10 +111,10 @@
 						</div>
 
 						<div class="col-md-6">
-							<div class="container-login100-form-btn">
+							<div class="container-login100-form-btn ">
 								<div class="wrap-login100-form-btn">
 									<div class="login100-form-bgbtn"></div>
-									<button class="login100-form-btn">
+									<button class="login100-form-btn" data-toggle="modal" data-target="#createAccount">
 										Create Account
 									</button>
 								</div>
@@ -122,6 +144,48 @@
 		</div>
 	</div>
 
+	<!-- Modal here the link:  data-toggle="modal" data-target="#exampleModal" -->
+	<div class="modal fade" id="createAccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Create Account</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+				<form action="http://localhost:8080/api/customers/createAccount" method="post" enctype="application/x-www-form-urlencoded">
+	      <div class="modal-body">
+					<div class="wrap-input100 validate-input" data-validate="Full Name">
+						<div class="wrap-input100 validate-input">
+							<label for="custom-select">Account Type</label>
+						</div>
+						<div class="input-group mb-3">
+						  <select class="custom-select" name="accountType" Type="text">
+						    <option selected>Select</option>
+						    <option>Curent Account</option>
+						    <option>Saving Account</option>
+						  </select>
+						</div>
+					</div>
+					<input type="text" name="accountN" value="<?php echo $newAccout ?>" hidden>
+					<input type="text" name="sortCode" value="901378" hidden>
+					<input type="text" name="customerID" value="<?php echo $customerID ?>" hidden>
+	      </div>
+	      <div class="modal-footer">
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn" type="submit" name="submit">
+								Submit
+							</button>
+						</div>
+					</div>
+	      </div>
+			</form>
+	    </div>
+	  </div>
+	</div>
 
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
